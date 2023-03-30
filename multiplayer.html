@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body class="min-h-[100vh] flex justify-center items-center text-center">
+    <div class="grid grid-rows-3 grid-cols-3 bg-slate-950">
+        <div onclick="clicked(event)" id="block-1" class="block  shadow-cyan-400 w-[10vh] h-[10vh] border-2 border-white "></div>
+        <div onclick="clicked(event)" id="block-2" class="block  shadow-cyan-400 w-[10vh] h-[10vh] border-2 border-white "></div>
+        <div onclick="clicked(event)" id="block-3" class="block  shadow-cyan-400 w-[10vh] h-[10vh] border-2 border-white"></div>
+        <div onclick="clicked(event)" id="block-4" class="block  shadow-cyan-400 w-[10vh] h-[10vh] border-2 border-white"></div>
+        <div onclick="clicked(event)" id="block-5" class="block  shadow-cyan-400 w-[10vh] h-[10vh] border-2 border-white"></div>
+        <div onclick="clicked(event)" id="block-6" class="block  shadow-cyan-400 w-[10vh] h-[10vh] border-2 border-white"></div>
+        <div onclick="clicked(event)" id="block-7" class="block shadow-lg shadow-cyan-400 w-[10vh] h-[10vh] border-2 border-white"></div>
+        <div onclick="clicked(event)" id="block-8" class="block shadow-lg shadow-cyan-400 w-[10vh] h-[10vh] border-2 border-white"></div>
+        <div onclick="clicked(event)" id="block-9" class="block shadow-lg shadow-cyan-400 w-[10vh] h-[10vh] border-2 border-white"></div>
+    </div>
+    
+    <div class="dialogue w-[50vw] h-[50vh] hidden left-[25vw] animate-bounce2 top-[25vh] bg-slate-950 shadow-lg py-[24vh] text-2xl shadow-cyan-400 text-white">
+        <a href="/">Replay</a>
+        <a href="http://127.0.0.1:5173/">Go Back To Home</a>
+    </div>
+</body>
+<script>
+let activePlayer = "human"
+let tiles = document.querySelectorAll('.block')
+let x = []
+let o = []
+
+function checkWinner(player , name){
+    if (player.includes('block-1') && player.includes('block-2') && player.includes('block-3')){
+        winner(name)
+    }
+    else if (player.includes('block-4') && player.includes('block-5') && player.includes('block-6')){
+        winner(name)
+    }
+    else if (player.includes('block-7') && player.includes('block-8') && player.includes('block-9')){
+        winner(name)
+    }
+    else if (player.includes('block-1') && player.includes('block-4') && player.includes('block-7')){
+        winner(name)
+    }
+    else if (player.includes('block-2') && player.includes('block-5') && player.includes('block-8')){
+        winner(name)
+    }
+    else if (player.includes('block-3') && player.includes('block-5') && player.includes('block-9')){
+        winner(name)
+    }
+    else if (player.includes('block-1') && player.includes('block-5') && player.includes('block-9')){
+        winner(name)
+    }
+    else if (player.includes('block-3') && player.includes('block-5') && player.includes('block-7')){
+        winner(name)
+    }
+}
+
+function winner(str){
+    dia = document.querySelectorAll('.dialogue')
+    dia.forEach(el => {
+        el.classList.remove("hidden")
+        el.classList.add('absolute')
+        el.innerText = `${str} wins !!!`
+    });
+}
+
+function switchPlayer(){
+    if (activePlayer == "human"){
+        activePlayer = "ai"
+    }
+    else{
+        activePlayer = "human"
+    }
+}
+
+function clicked(e){
+    if (activePlayer == "human"){
+        
+        e.target.style.backgroundImage = "url('/images/o.svg')"
+        o.push(e.target.id)
+        checkWinner(o , 'O')
+        switchPlayer()
+    }
+    else if (activePlayer == "ai"){
+        
+        e.target.style.backgroundImage = "url('/images/x.svg')"
+        x.push(e.target.id)
+        checkWinner(x , 'X')
+        switchPlayer()
+    }
+}
+
+// tiles.forEach(i => {
+//      i.onclick = clicked(i) 
+// });
+</script>
+</html>
