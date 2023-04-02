@@ -108,7 +108,7 @@ function PlayAI(){
 
 function playMove(i , j){
         elem = document.querySelector(`#block-${i}${j}`)
-        elem.style.backgroundImage = "url('/assets/x.svg')"
+        elem.style.backgroundImage = "url('https://spandan455.github.io/TicTacToe/assets/x.svg')"
         x.push(`block-${i}${j}`)
         board[i][j] = 'X'
         checkWinner(x , 'X')
@@ -237,7 +237,7 @@ function switchPlayer(){
 function clicked(e){
     if (activePlayer == "human"){
         
-        e.target.style.backgroundImage = "url('/assets/o.svg')"
+        e.target.style.backgroundImage = "url('https://spandan455.github.io/TicTacToe/assets/o.svg')"
         o.push(e.target.id)
         let remove1 = e.target.id
         let remove = remove1.replace("block-" , "")
