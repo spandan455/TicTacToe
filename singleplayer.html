@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="/assets/index-8109563a.css">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
 </head>
 <body class="min-h-[100vh] flex justify-center items-center text-center">
@@ -111,7 +111,7 @@ function PlayAI(){
 
 function playMove(i , j){
         elem = document.querySelector(`#block-${i}${j}`)
-        elem.style.backgroundImage = "url('/images/x.svg')"
+        elem.style.backgroundImage = "url('/assets/x.svg')"
         x.push(`block-${i}${j}`)
         board[i][j] = 'X'
         checkWinner(x , 'X')
@@ -191,9 +191,27 @@ function checkWinner(player , name){
         winner(name)
         winnner = 1
     }
+    checkTie()
     // else if(x.includes('block-00') || o.includes('block-00') && x.includes('block-01') || o.includes('block-01') && x.includes('block-02') || o.includes('block-02') && x.includes('block-10') || o.includes('block-10') && x.includes('block-11') || o.includes('block-11') && x.includes('block-12') || o.includes('block-12') && x.includes('block-20') || o.includes('block-20') && x.includes('block-21') || o.includes('block-21') && x.includes('block-22') || o.includes('block-22')){
     //   winner("It's a tie")
     // }
+}
+
+function checkTie(){
+  let isTie = false;
+  for(i=0;i<3;i++){
+    for(j=0;j<3;j++){
+      if(board[i][j] != ''){
+        isTie = true
+      }
+      else{
+        isTie = false
+      }
+    }
+  }
+  if(isTie == true){
+    winner("It's a tie")
+  }
 }
 
 function winner(str){
@@ -222,7 +240,7 @@ function switchPlayer(){
 function clicked(e){
     if (activePlayer == "human"){
         
-        e.target.style.backgroundImage = "url('/images/o.svg')"
+        e.target.style.backgroundImage = "url('/assets/o.svg')"
         o.push(e.target.id)
         let remove1 = e.target.id
         let remove = remove1.replace("block-" , "")
@@ -235,6 +253,6 @@ function clicked(e){
 // tiles.forEach(i => {
 //      i.onclick = clicked(i) 
 // });
-PlayAI()
+// PlayAI()
 </script>
 </html>
