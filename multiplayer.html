@@ -63,15 +63,8 @@ function checkWinner(player , name){
 
 function checkTie(){
   let isTie = false;
-  for(i=0;i<3;i++){
-    for(j=0;j<3;j++){
-      if(board[i][j] != ''){
-        isTie = true
-      }
-      else{
-        isTie = false
-      }
-    }
+  if((x.includes('block-00') || o.includes('block-00')) && (x.includes('block-01') || o.includes('block-01')) && (x.includes('block-02') || o.includes('block-02')) && (x.includes('block-10') || o.includes('block-10')) && (x.includes('block-11') || o.includes('block-11')) && (x.includes('block-12') || o.includes('block-12')) && (x.includes('block-20') || o.includes('block-20')) && (x.includes('block-21') || o.includes('block-21')) && (x.includes('block-22') || o.includes('block-22'))){
+    isTie = true
   }
   if(isTie == true){
     winner("It's a tie")
