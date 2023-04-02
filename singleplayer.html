@@ -109,6 +109,7 @@ function PlayAI(){
 function playMove(i , j){
         elem = document.querySelector(`#block-${i}${j}`)
         elem.style.backgroundImage = "url('https://spandan455.github.io/TicTacToe/assets/x.svg')"
+        elem.style.backgroundSize = "cover"
         x.push(`block-${i}${j}`)
         board[i][j] = 'X'
         checkWinner(x , 'X')
