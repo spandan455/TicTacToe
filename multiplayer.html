@@ -98,6 +98,7 @@ function clicked(e){
     if (activePlayer == "human"){
         
         e.target.style.backgroundImage = "url('https://spandan455.github.io/TicTacToe/assets/o.svg')"
+        e.target.style.backgroundSize = "cover"
         o.push(e.target.id)
         checkWinner(o , 'O')
         switchPlayer()
@@ -108,6 +109,7 @@ function clicked(e){
     else if (activePlayer == "ai"){
         
         e.target.style.backgroundImage = "url('https://spandan455.github.io/TicTacToe/assets/x.svg')"
+        e.target.style.backgroundSize = "cover"
         x.push(e.target.id)
         checkWinner(x , 'X')
         switchPlayer()
